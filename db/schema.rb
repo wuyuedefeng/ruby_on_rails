@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170402134422) do
     t.string   "gender"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.string   "location"
   end
 
   create_table "wallets", force: :cascade do |t|
