@@ -9,3 +9,5 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
+
+# rails g model User name:string phone_number:string gender:string

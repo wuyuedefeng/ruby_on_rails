@@ -7,3 +7,6 @@ class CreateWallets < ActiveRecord::Migration
     end
   end
 end
+
+
+# rails g model Wallet money:decimal
