@@ -15,6 +15,9 @@
 # 重建数据库
 # rake db:reset
 
+# 不同环境中运行迁移
+# rake db:migrate RAILS_ENV=test
+
 10.times do |n|
   User.create(:name => "name#{n}", :phone_number => n, :gender => '男')
 end
