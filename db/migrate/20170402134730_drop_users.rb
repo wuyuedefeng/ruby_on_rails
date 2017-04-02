@@ -9,6 +9,17 @@ class DropUsers < ActiveRecord::Migration
     #   t.timestamps null: false
     # end
   end
+
+
+
+  # 可以使用up 和 down 方法进行迁移， up方法是执行数据库迁移时 执行， down方法是rollback时候执行
+  # def up
+  #   change_column :users, :money, :integer
+  # end
+  #
+  # def down
+  #   change_column :users, :money, :decimal
+  # end
 end
 
 
