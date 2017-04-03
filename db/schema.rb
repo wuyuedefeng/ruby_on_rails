@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170403023526) do
     t.string   "gender"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "location"
     t.string   "password"
     t.string   "province"
   end
