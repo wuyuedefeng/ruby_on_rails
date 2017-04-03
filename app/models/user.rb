@@ -1,3 +1,10 @@
+# 回调类
+class PhoneVerifyCallback
+  def self.after_create(record)
+    pust "PhoneVerifyCallback"
+  end
+end
+
 class User < ActiveRecord::Base
   # 创建对象
   # 执行顺序 before_validation -> after_validation -> before_save -> before_create -> (执行sql写入到数据库)
@@ -12,7 +19,7 @@ class User < ActiveRecord::Base
   # 条件组合
   with_options if: :test? do
     before_create :before_create
-    after_create :after_create
+    after_create :after_create, PhoneVerifyCallback
     after_save :after_save
   end
 
