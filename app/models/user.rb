@@ -20,4 +20,13 @@ class User < ActiveRecord::Base
 
   # 条件验证
 
+  # validates :phone_number, uniqueness: true, :if => "name.nil" # name属性为nil才进行验证
+
+  # validates :phone_number, uniqueness: true, :if => :test? # test? 方法返回true才进行验证
+  # def test?
+  #   true
+  # end
+
+
+
 end
