@@ -89,3 +89,18 @@ class User < ActiveRecord::Base
 
 
 end
+
+
+#### 跳过数据验证方法
+# * save(validate: false)
+# * update_all
+# * update_column
+# * update_columns
+# * update_attibute
+# * update_counters
+# * touch
+# * toggle!
+# * increment_counter
+# * increment!
+# * decrement_counter
+# * decrement!
