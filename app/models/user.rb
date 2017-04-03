@@ -61,5 +61,29 @@ class User < ActiveRecord::Base
 
   # validates :name, name: true # 会自动调用NameValidator
 
+  # 自定义验证方法
+
+  # validate :my_validator # 所有验证在一个方法中
+  # def my_validator
+  #   if name.nil?
+  #     errors[:name] << '用户名不能为空'
+  #   end
+  #   if phone_number
+  #     errors[:phone_number] << '电话号码不能为空'
+  #   end
+  # end
+  #
+  # validate :name_validator, :phone_number_validator # 多个验证单独执行， 按顺序执行
+  # def name_validator
+  #   if name.nil?
+  #     errors[:name] << '用户名不能为空'
+  #   end
+  # end
+  # def phone_number_validator
+  #   if phone_number
+  #     errors[:phone_number] << '电话号码不能为空'
+  #   end
+  # end
+
 
 end
