@@ -77,6 +77,8 @@ class User < ActiveRecord::Base
   # def name_validator
   #   if name.nil?
   #     errors[:name] << '用户名不能为空'
+  #     # 等价于
+  #     # errors.add(:name, '用户名不能为空')
   #   end
   # end
   # def phone_number_validator
