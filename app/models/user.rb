@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
    # validates :name, length: {maximum: 20} # 最多20个字符
    # validates :name, length: {in: 3..20} # 3 - 20 个字符
    # validates :name, length: {is: 5} # 必须是5个字符
+   validates :name, uniqueness: true
 
 
    validates :phone_number, presence: true # 不能为空
