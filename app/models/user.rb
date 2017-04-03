@@ -1,3 +1,14 @@
+# class MyValidator < ActiveModel::Validator
+#   def validate(record)
+#     if record.name.nil?
+#       record.errors[:name] << "用户名不能为空"
+#     end
+#     if record.phone_number.nil?
+#       record.errors[:phone_number] << "手机号不能为空"
+#     end
+#   end
+# end
+
 class User < ActiveRecord::Base
    # validates :name, presence: true # 不能为空
    # validates :name, length: {minimum: 3} # 最少3个字符
@@ -37,7 +48,8 @@ class User < ActiveRecord::Base
   #   1 + 1 == 2
   # end
 
-
+  # 自定义验证
+  # validates_with MyValidator
 
 
 end
