@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
 
    validates :phone_number, presence: true # 不能为空
    # validates :phone_number, absence: true # 必须为空
+   validates :phone_number, format: {with: /1[0-9]{10}\z/} # 正则匹配验证
 
   validates :password, confirmation: true # 自动添加虚拟字段： password_confirmation, password_confirmation不为空才会验证
   validates :password_confirmation, presence: true
+
+  # validates :province, inclusion: {in: ["北京", "上海"]} # province的值必须在列表中
+  # validates :province, exclusion: {in: ["日本"]} # province的值不能是列表中的值
 end
