@@ -1,7 +1,7 @@
 # 回调类
 class PhoneVerifyCallback
   def self.after_create(record)
-    pust "PhoneVerifyCallback"
+    puts "PhoneVerifyCallback"
   end
 end
 
@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # -> after_create -> after_save
   before_validation :before_validation
   after_validation :after_validation
-  before_save :before_save, if: test? # test?返回true才执行 before_save的回调
+  before_save :before_save, if: :test? # test?返回true才执行 before_save的回调
   def test?
     true
   end
@@ -32,12 +32,22 @@ class User < ActiveRecord::Base
   # 执行顺序
   # before_destroy -> (执行sql销毁对象) -> after_destroy
 
+  # 事务之后回调
+  # after_commit
+  # after_rollback # 新增或更新数据事务回滚时调用
+  after_commit :after_commit # 创建或者更新事务完成后，回调after_commit
+  # after_commit :after_commit, on: :create # 只有创建时候回调after_commit
+  # after_commit :after_commit, on: :update # 只有更新时候回调after_commit
+
+  after_rollback :after_rollback
+
 
 
 
 
   def before_validation
     puts 'before_validation'
+    false
   end
 
   def after_validation
@@ -58,6 +68,14 @@ class User < ActiveRecord::Base
 
   def after_save
     puts 'after_save'
+  end
+
+  def after_commit
+    puts 'after_commit'
+  end
+
+  def after_rollback
+    puts 'after_rollback'
   end
 
 end
