@@ -9,6 +9,14 @@
 #   end
 # end
 
+# class NameValidator < ActiveModel::EachValidator
+#   def validate_each(record, attribute, value)
+#     if value.nil?
+#       record.errors[attribute] << '用户名不能为空'
+#     end
+#   end
+# end
+
 class User < ActiveRecord::Base
    # validates :name, presence: true # 不能为空
    # validates :name, length: {minimum: 3} # 最少3个字符
@@ -48,8 +56,10 @@ class User < ActiveRecord::Base
   #   1 + 1 == 2
   # end
 
-  # 自定义验证
+  # 自定义验证类
   # validates_with MyValidator
+
+  # validates :name, name: true # 会自动调用NameValidator
 
 
 end
