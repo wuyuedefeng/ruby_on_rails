@@ -4,10 +4,17 @@ class User < ActiveRecord::Base
   # -> after_create -> after_save
   before_validation :before_validation
   after_validation :after_validation
-  before_save :before_save
-  before_create :before_create
-  after_create :after_create
-  after_save :after_save
+  before_save :before_save, if: test? # test?返回true才执行 before_save的回调
+  def test?
+    true
+  end
+
+  # 条件组合
+  with_options if: :test? do
+    before_create :before_create
+    after_create :after_create
+    after_save :after_save
+  end
 
   # 更新对象
   # 执行顺序
@@ -84,6 +91,5 @@ end
 # before_*
 #   - 返回false
 #   - 抛出异常
-
 # after_*
 #   - 抛出异常
