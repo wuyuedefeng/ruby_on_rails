@@ -22,10 +22,21 @@ class User < ActiveRecord::Base
 
   # validates :phone_number, uniqueness: true, :if => "name.nil" # name属性为nil才进行验证
 
+  # validates :phone_number, uniqueness: true, :if => Proc.new {name.nil?} # name属性为nil才进行验证
+
   # validates :phone_number, uniqueness: true, :if => :test? # test? 方法返回true才进行验证
   # def test?
   #   true
   # end
+
+  # with_options if: :test? do
+  #   validates :name, presence: true
+  #   validates :phone_number, presence: true
+  # end
+  # def test?
+  #   1 + 1 == 2
+  # end
+
 
 
 
