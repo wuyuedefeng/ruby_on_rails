@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405015853) do
+ActiveRecord::Schema.define(version: 20170405021054) do
 
   create_table "moments", force: :cascade do |t|
     t.string   "text"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20170405015853) do
   end
 
   add_index "moments", ["user_id"], name: "index_moments_on_user_id"
+
+  create_table "official_accounts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_follow_official_accounts", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "official_account_id"
+  end
+
+  add_index "user_follow_official_accounts", ["official_account_id"], name: "index_user_follow_official_accounts_on_official_account_id"
+  add_index "user_follow_official_accounts", ["user_id"], name: "index_user_follow_official_accounts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
