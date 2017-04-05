@@ -78,7 +78,7 @@ end
 # collection=objects
 # collection_single_ids
 # collection_single_ids = ids
-# collection.clear
+# collection.clear # User.first.moments.clear 解除所有关联
 # collection.empty?
 # collection.size
 # collection.find(..)
@@ -102,6 +102,28 @@ end
 
 
 
-# has_and_belongs_to_many [habtm]
+# has_and_belongs_to_many [habtm] 添加的方法
+# collection(force_reload = false) # User.first.official_accounts
+# collection << (object, ..)  # o = OfficialAccount.first; User.first.official_accounts << o
+# delete(object, ..)
+# destroy(object, ..)
+# collection=objects
+# collection_single_ids
+# collection_single_ids = ids
+# collection.clear
+# collection.empty?
+# collection.size
+# collection.find(..)
+# collection.where(..)
+# collection.exists?(..)
+# collection.build(attributes={},..)
+# collection.create(attributes={},..)
+# collection.create!(attributes={},..)
 
+# has_and_belongs_to_many [habtm] 添加的选项
+# * :association_foreign_key
+# * :class_name
+# * :foreign_key
+# * join_table
+# * validate
 
