@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405021820) do
+ActiveRecord::Schema.define(version: 20170405022634) do
 
   create_table "locations", force: :cascade do |t|
     t.string   "province"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20170405021820) do
 
   add_index "user_follow_official_accounts", ["official_account_id"], name: "index_user_follow_official_accounts_on_official_account_id"
   add_index "user_follow_official_accounts", ["user_id"], name: "index_user_follow_official_accounts_on_user_id"
+
+  create_table "user_follow_users", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+  end
+
+  add_index "user_follow_users", ["followee_id"], name: "index_user_follow_users_on_followee_id"
+  add_index "user_follow_users", ["follower_id"], name: "index_user_follow_users_on_follower_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
