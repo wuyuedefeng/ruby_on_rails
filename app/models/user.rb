@@ -1,6 +1,9 @@
 # 用户
 class User < ActiveRecord::Base
   has_many :moments
+
+  # 关联回调 before_add
+  # has_many :moments, before_add: :before_add, after_add: :after_add, before_remove: :before_remove, after_remove: :after_remove
   # rails 4.1之前
   # has_many :moments, :inverse_of => :user
 
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
   # 注册位置
   has_one  :location, :as => :loc, :validate => true
 
-  # 自关联
+  # 自关联 # 和下面的friendship很像， 只是user_follow_users没有model， friendship创建了一个model，看情况而定
   has_and_belongs_to_many :followers, :join_table => "user_follow_users", :class_name => "User", :foreign_key => "followee_id", :association_foreign_key => "follower_id"
 
   # 朋友圈的所有位置
@@ -27,6 +30,22 @@ class User < ActiveRecord::Base
 
   def friends
     inviters | acceptors
+  end
+
+  def before_add moment
+    puts 'before_add'
+  end
+
+  def after_add moment
+    puts 'after_add'
+  end
+
+  def before_remove moment
+    puts 'before_remove'
+  end
+
+  def after_remove moment
+    puts 'after_remove'
   end
 end
 
@@ -127,3 +146,9 @@ end
 # * join_table
 # * validate
 
+
+## 关联回调
+# * before_add
+# * after_add
+# * before_remove
+# * after_remove
