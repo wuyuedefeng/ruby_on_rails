@@ -16,6 +16,18 @@ class User < ActiveRecord::Base
   # 朋友圈的所有位置
   # has_many :locations, :through => :moments
   has_many :has_beens, :through => :moments, :source => :location
+
+
+
+  has_many :inviter_friendships, :class_name => "Friendship", :foreign_key => "acceptor_id"
+  has_many :acceptor_friendships, :class_name => "Friendship", :foreign_key => "inviter_id"
+
+  has_many :inviters, :through => :inviter_friendships
+  has_many :acceptors, :through => :acceptor_friendships
+
+  def friends
+    inviters | acceptors
+  end
 end
 
 ### belongs_to 添加的方法
