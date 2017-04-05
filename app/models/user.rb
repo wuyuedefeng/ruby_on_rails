@@ -1,9 +1,19 @@
+module MyMethod
+  def find_text text
+    where(:text => text)
+  end
+end
+
 # 用户
 class User < ActiveRecord::Base
   has_many :moments
 
-  # 关联回调 before_add
+  # 关联回调
   # has_many :moments, before_add: :before_add, after_add: :after_add, before_remove: :before_remove, after_remove: :after_remove
+
+  # 关联方法拓展
+  # has_many :moments, :extend => MyMethod
+
   # rails 4.1之前
   # has_many :moments, :inverse_of => :user
 
